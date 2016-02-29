@@ -141,17 +141,27 @@ namespace PatientWeightAssessment
             var overAllHealthInfoUC = (OverAllHealthUC)tabPages[3].Controls[0];
             var overAllHealthInfo = patientWeightAssessment.OverAllHealthInfo;
 
-            overAllHealthInfo.OverAllHealthRating = (HealthRatingEnum)Enum.Parse(typeof(HealthRatingEnum), overAllHealthInfoUC.cbOverAllHealthRate.SelectedValue.ToString());
-            overAllHealthInfo.HowOftenDepressed = (DepressionEnum)Enum.Parse(typeof(DepressionEnum), overAllHealthInfoUC.cbFeelDepressed.SelectedValue.ToString());
-            overAllHealthInfo.HowOftenExcercise = (ExerciseEnum)Enum.Parse(typeof(ExerciseEnum), overAllHealthInfoUC.cbExercise.SelectedValue.ToString());
-            overAllHealthInfo.HowOftenSmoke = (GeneralEnum)Enum.Parse(typeof(GeneralEnum), overAllHealthInfoUC.cbSmoke.SelectedValue.ToString());
-            overAllHealthInfo.HowOftenDrinkAlcohol = (GeneralEnum)Enum.Parse(typeof(GeneralEnum), overAllHealthInfoUC.cbDrinkAlcohol.SelectedValue.ToString());
-            overAllHealthInfo.HowOftenFastFood = (GeneralEnum)Enum.Parse(typeof(GeneralEnum), overAllHealthInfoUC.cbEatFastFood.SelectedValue.ToString());
-            overAllHealthInfo.HowOftenRestfulSleep = (SleepEnum)Enum.Parse(typeof(SleepEnum), overAllHealthInfoUC.cbRestfulSleep.SelectedValue.ToString());
+            if(overAllHealthInfoUC.cbOverAllHealthRate.SelectedValue != null)
+                overAllHealthInfo.OverAllHealthRating = (HealthRatingEnum)Enum.Parse(typeof(HealthRatingEnum), overAllHealthInfoUC.cbOverAllHealthRate.SelectedValue.ToString());
+            if (overAllHealthInfoUC.cbFeelDepressed.SelectedValue != null)
+                overAllHealthInfo.HowOftenDepressed = (DepressionEnum)Enum.Parse(typeof(DepressionEnum), overAllHealthInfoUC.cbFeelDepressed.SelectedValue.ToString());
+            if (overAllHealthInfoUC.cbExercise.SelectedValue != null)
+                overAllHealthInfo.HowOftenExcercise = (ExerciseEnum)Enum.Parse(typeof(ExerciseEnum), overAllHealthInfoUC.cbExercise.SelectedValue.ToString());
+            if (overAllHealthInfoUC.cbSmoke.SelectedValue != null)
+                overAllHealthInfo.HowOftenSmoke = (GeneralEnum)Enum.Parse(typeof(GeneralEnum), overAllHealthInfoUC.cbSmoke.SelectedValue.ToString());
+            if (overAllHealthInfoUC.cbDrinkAlcohol.SelectedValue != null)
+                overAllHealthInfo.HowOftenDrinkAlcohol = (GeneralEnum)Enum.Parse(typeof(GeneralEnum), overAllHealthInfoUC.cbDrinkAlcohol.SelectedValue.ToString());
+            if (overAllHealthInfoUC.cbEatFastFood.SelectedValue != null)
+                overAllHealthInfo.HowOftenFastFood = (GeneralEnum)Enum.Parse(typeof(GeneralEnum), overAllHealthInfoUC.cbEatFastFood.SelectedValue.ToString());
+            if (overAllHealthInfoUC.cbRestfulSleep.SelectedValue != null)
+                overAllHealthInfo.HowOftenRestfulSleep = (SleepEnum)Enum.Parse(typeof(SleepEnum), overAllHealthInfoUC.cbRestfulSleep.SelectedValue.ToString());
 
             overAllHealthInfo.CigarettesPerDay = overAllHealthInfoUC.txtCigarettesPerDay.Text.Trim();
             overAllHealthInfo.AlcoholsPerWeek = overAllHealthInfoUC.txtAlcoholPerWeek.Text.Trim();
-            overAllHealthInfo.HoursOfSleepPerNight = int.Parse(overAllHealthInfoUC.txtHoursOfSleepPerNight.Text.Trim());
+
+            if (!string.IsNullOrEmpty(overAllHealthInfoUC.txtHoursOfSleepPerNight.Text.Trim()))
+                overAllHealthInfo.HoursOfSleepPerNight = int.Parse(overAllHealthInfoUC.txtHoursOfSleepPerNight.Text.Trim());
+
             overAllHealthInfo.CurrentMedication = overAllHealthInfoUC.txtCurrentMedication.Text.Trim();
             overAllHealthInfo.StartingDate = overAllHealthInfoUC.dtStartingDate.Value.ToString();
             overAllHealthInfo.DietaryRestrictions = overAllHealthInfoUC.txtDietaryRestrictions.Text.Trim();
@@ -161,15 +171,26 @@ namespace PatientWeightAssessment
             var nutritionInfoUC = (NutritionUC)tabPages[4].Controls[0];
             var nutritionInfo = patientWeightAssessment.NutritionInfo;
 
-            nutritionInfo.Vegetables = (NutritionEnum)Enum.Parse(typeof(NutritionEnum), nutritionInfoUC.cmbNutritionVegetablesDoYouEat.SelectedValue.ToString());
-            nutritionInfo.Fruits = (NutritionEnum)Enum.Parse(typeof(NutritionEnum), nutritionInfoUC.cmbNutritionFruitsDoYouEat.SelectedValue.ToString());
-            nutritionInfo.Grains = (NutritionEnum)Enum.Parse(typeof(NutritionEnum), nutritionInfoUC.cmbNutritionGrainsDoYouEat.SelectedValue.ToString());
-            nutritionInfo.Meat = (NutritionEnum)Enum.Parse(typeof(NutritionEnum), nutritionInfoUC.cmbNutritionMeatDoYouEat.SelectedValue.ToString());
-            nutritionInfo.SugarOrCarbs = (NutritionEnum)Enum.Parse(typeof(NutritionEnum), nutritionInfoUC.cmbNutritionSugar.SelectedValue.ToString());
-            nutritionInfo.Snack = (SnackEnum)Enum.Parse(typeof(SnackEnum), nutritionInfoUC.cmbNutritionSnack.SelectedValue.ToString());
-            nutritionInfo.CoffeeTea = (DrinkEnum)Enum.Parse(typeof(DrinkEnum), nutritionInfoUC.cmbNutritionCoffeeTea.SelectedValue.ToString());
-            nutritionInfo.EatOut = (EatEnum)Enum.Parse(typeof(EatEnum), nutritionInfoUC.cmbNutritionEatOut.SelectedValue.ToString());
-            nutritionInfo.MealsPerDay = int.Parse(nutritionInfoUC.txtNutritionMealsPerDay.Text.Trim());
+            if (nutritionInfoUC.cmbNutritionVegetablesDoYouEat.SelectedValue != null)
+                nutritionInfo.Vegetables = (NutritionEnum)Enum.Parse(typeof(NutritionEnum), nutritionInfoUC.cmbNutritionVegetablesDoYouEat.SelectedValue.ToString());
+            if (nutritionInfoUC.cmbNutritionFruitsDoYouEat.SelectedValue != null)
+                nutritionInfo.Fruits = (NutritionEnum)Enum.Parse(typeof(NutritionEnum), nutritionInfoUC.cmbNutritionFruitsDoYouEat.SelectedValue.ToString());
+
+            if (nutritionInfoUC.cmbNutritionGrainsDoYouEat.SelectedValue != null)
+                nutritionInfo.Grains = (NutritionEnum)Enum.Parse(typeof(NutritionEnum), nutritionInfoUC.cmbNutritionGrainsDoYouEat.SelectedValue.ToString());
+            if (nutritionInfoUC.cmbNutritionMeatDoYouEat.SelectedValue != null)
+                nutritionInfo.Meat = (NutritionEnum)Enum.Parse(typeof(NutritionEnum), nutritionInfoUC.cmbNutritionMeatDoYouEat.SelectedValue.ToString());
+            if (nutritionInfoUC.cmbNutritionSugar.SelectedValue != null)
+                nutritionInfo.SugarOrCarbs = (NutritionEnum)Enum.Parse(typeof(NutritionEnum), nutritionInfoUC.cmbNutritionSugar.SelectedValue.ToString());
+            if (nutritionInfoUC.cmbNutritionSnack.SelectedValue != null)
+                nutritionInfo.Snack = (SnackEnum)Enum.Parse(typeof(SnackEnum), nutritionInfoUC.cmbNutritionSnack.SelectedValue.ToString());
+            if (nutritionInfoUC.cmbNutritionCoffeeTea.SelectedValue != null)
+                nutritionInfo.CoffeeTea = (DrinkEnum)Enum.Parse(typeof(DrinkEnum), nutritionInfoUC.cmbNutritionCoffeeTea.SelectedValue.ToString());
+            if (nutritionInfoUC.cmbNutritionEatOut.SelectedValue != null)
+                nutritionInfo.EatOut = (EatEnum)Enum.Parse(typeof(EatEnum), nutritionInfoUC.cmbNutritionEatOut.SelectedValue.ToString());
+            if(!string.IsNullOrEmpty(nutritionInfoUC.txtNutritionMealsPerDay.Text.Trim()))
+                nutritionInfo.MealsPerDay = int.Parse(nutritionInfoUC.txtNutritionMealsPerDay.Text.Trim());
+
             nutritionInfo.EatSameTime = nutritionInfoUC.cbNutritionEatSameTimeYes.Checked;
             nutritionInfo.SkipMeal = nutritionInfoUC.cbNutritionSkipMealsYes.Checked;
             nutritionInfo.CaloriesPerMeal = nutritionInfoUC.txtNutritionCaloriesEatPerMeal.Text.Trim();
@@ -189,23 +210,34 @@ namespace PatientWeightAssessment
             // Exercise Info
             var exerciseInfoUC = (ExerciseUC)tabPages[5].Controls[0];
             var exerciseInfo = patientWeightAssessment.ExerciseInfo;
-            exerciseInfo.DaysPerWeekOnCardio = int.Parse(exerciseInfoUC.txtExercisePerWeekOnCardio.Text.Trim());
-            exerciseInfo.DaysPerWeekOnStrength = int.Parse(exerciseInfoUC.txtExercisePerWeekOnStrength.Text.Trim());
-            exerciseInfo.LengthOfTimeSpentOnCardio = int.Parse(exerciseInfoUC.txtExerciseTimeSpentOnCardio.Text.Trim());
-            exerciseInfo.LengthOfTimeSpentOnStrength = int.Parse(exerciseInfoUC.txtExerciseTimeSpentOnStrength.Text.Trim());
-            exerciseInfo.InjuriesOrConditionsInterfere = exerciseInfoUC.txtExerciseInjuriesOrConditions.Text.Trim();
+
+            if(!string.IsNullOrEmpty(exerciseInfoUC.txtExercisePerWeekOnCardio.Text.Trim()))
+                exerciseInfo.DaysPerWeekOnCardio = int.Parse(exerciseInfoUC.txtExercisePerWeekOnCardio.Text.Trim());
+            if (!string.IsNullOrEmpty(exerciseInfoUC.txtExercisePerWeekOnStrength.Text.Trim()))
+                exerciseInfo.DaysPerWeekOnStrength = int.Parse(exerciseInfoUC.txtExercisePerWeekOnStrength.Text.Trim());
+            if (!string.IsNullOrEmpty(exerciseInfoUC.txtExerciseTimeSpentOnCardio.Text.Trim()))
+                exerciseInfo.LengthOfTimeSpentOnCardio = int.Parse(exerciseInfoUC.txtExerciseTimeSpentOnCardio.Text.Trim());
+            if (!string.IsNullOrEmpty(exerciseInfoUC.txtExerciseTimeSpentOnStrength.Text.Trim()))
+                exerciseInfo.LengthOfTimeSpentOnStrength = int.Parse(exerciseInfoUC.txtExerciseTimeSpentOnStrength.Text.Trim());
+            if (!string.IsNullOrEmpty(exerciseInfoUC.txtExerciseInjuriesOrConditions.Text.Trim()))
+                exerciseInfo.InjuriesOrConditionsInterfere = exerciseInfoUC.txtExerciseInjuriesOrConditions.Text.Trim();
 
             // Other Info
-            var otherInfoUC = (OtherUC)tabPages[6].Controls[0];
+            var otherInfoUC = (OtherUC)tabPages[6].Controls[2];
             var otherInfo = patientWeightAssessment.OtherInfo;
 
             otherInfo.WeightAtBirth = otherInfoUC.txtOtherWeightAtBirth.Text.Trim();
             otherInfo.WeightFiveYearsAgo = otherInfoUC.txtOtherWeight5yrsAgo.Text.Trim();
             otherInfo.WeightSixMonthAgo = otherInfoUC.txtOtherWeight6MonthsAgo.Text.Trim();
             otherInfo.HeaviestWeight = otherInfoUC.txtOtherHeaviestWeight.Text.Trim();
-            otherInfo.HeaviestWeightAge = int.Parse(otherInfoUC.txtOtherHeaviestWeightAge.Text.Trim());
+
+            if (!string.IsNullOrEmpty(otherInfoUC.txtOtherHeaviestWeightAge.Text.Trim()))
+                otherInfo.HeaviestWeightAge = int.Parse(otherInfoUC.txtOtherHeaviestWeightAge.Text.Trim());
             otherInfo.LightestWeight = otherInfoUC.txtOtherLightestWeight.Text.Trim();
-            otherInfo.LightestWeightAge = int.Parse(otherInfoUC.txtOtherLightestWeightAge.Text.Trim());
+
+            if (!string.IsNullOrEmpty(otherInfoUC.txtOtherLightestWeightAge.Text.Trim()))
+                otherInfo.LightestWeightAge = int.Parse(otherInfoUC.txtOtherLightestWeightAge.Text.Trim());
+
             otherInfo.TargetWeight = otherInfoUC.txtOtherTargetWeight.Text.Trim();
             otherInfo.EatingDisorders = otherInfoUC.txtOtherEatingDisorders.Text.Trim();
             otherInfo.LengthOfTime = otherInfoUC.txtOtherLengthOfTime.Text.Trim();

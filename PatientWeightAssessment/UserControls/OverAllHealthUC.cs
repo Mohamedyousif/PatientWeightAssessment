@@ -20,12 +20,25 @@ namespace PatientWeightAssessment.UserControls
         private void OverAllHealthUC_Load(object sender, EventArgs e)
         {
             cbDrinkAlcohol.SelectedIndex = 0;
+            cbDrinkAlcohol.SelectedValue = "Never";
+
             cbEatFastFood.SelectedIndex = 0;
+            cbEatFastFood.SelectedValue = "Never";
+
             cbExercise.SelectedIndex = 0;
+            cbExercise.SelectedValue = "Never";
+
             cbFeelDepressed.SelectedIndex = 0;
+            cbFeelDepressed.SelectedValue = "Never";
+
             cbOverAllHealthRate.SelectedIndex = 0;
+            cbOverAllHealthRate.SelectedValue = "Great";
+
             cbRestfulSleep.SelectedIndex = 0;
+            cbRestfulSleep.SelectedValue = "Restful";
+
             cbSmoke.SelectedIndex = 0;
+            cbSmoke.SelectedValue = "Never";
         }
     }
 }
